@@ -1,9 +1,6 @@
 package test;
 
-import static org.junit.Assert.*;
-
-import java.util.Arrays;
-import java.util.stream.Stream;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 

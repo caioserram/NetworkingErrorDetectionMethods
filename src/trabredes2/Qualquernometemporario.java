@@ -7,8 +7,6 @@ package trabredes2;
 
 import java.util.Random;
 import java.util.Scanner;
-import java.util.stream.Stream;
-import java.util.stream.IntStream;
 
 /**
  *

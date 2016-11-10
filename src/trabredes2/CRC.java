@@ -10,6 +10,7 @@ public class CRC {
 
 	public Integer[] executa(Integer[] msg) {
 		// Integer[]vet = new Integer[];
+		//uma opcao de vetor padronizado : 0001 0101
 		int i;
 		int j;
 		int k;
