@@ -58,22 +58,6 @@ public class Checksum {
 		}
 		return resultadoSomaC1;
 	}
-
-	
-	public static void imprimeVetor(Integer[] vet) {
-		int cont = 0;
-		while (cont < vet.length) {
-			for (int i = cont; i < 8 + cont; i++) {
-				System.out.print(vet[i] + " ");
-			}
-			cont += 8;
-			if (vet.length > 8) {
-				System.out.println("");
-			}
-		}
-		System.out.println("");
-
-	}
 	
 	public static Integer[] executa(Integer[] msg) {
 		Integer[] valorChecksum = new Integer[8];
@@ -94,12 +78,12 @@ public class Checksum {
 		}
 		System.out.println("");
 		System.out.print("1: ");
-		imprimeVetor(pt1Msg);
+		Util.imprimeVetor(pt1Msg);
 		System.out.print("2: ");
-		imprimeVetor(pt2Msg);
+		Util.imprimeVetor(pt2Msg);
 		resSomaC1 = somaC1(pt1Msg, pt2Msg);
 		System.out.print("3: ");
-		imprimeVetor(resSomaC1);
+		Util.imprimeVetor(resSomaC1);
 		System.out.println("");
 		while (nBitsUtilizados < tamMsg) {
 			j = 0;
@@ -108,19 +92,19 @@ public class Checksum {
 				j++;
 				nBitsUtilizados += 8;
 				System.out.print("1: ");
-				imprimeVetor(resSomaC1);
+				Util.imprimeVetor(resSomaC1);
 				resSomaC1 = somaC1(resSomaC1, pt2Msg);
 				System.out.print("2: ");
-				imprimeVetor(pt2Msg);
+				Util.imprimeVetor(pt2Msg);
 				System.out.print("3: ");
-				imprimeVetor(resSomaC1);
+				Util.imprimeVetor(resSomaC1);
 				System.out.println("");
 			}
 		}
 		for (int i = 0; i < 8; i++) {
 			valorChecksum[i] = resSomaC1[i] == 0 ? 1 : 0;
 		}
-		imprimeVetor(valorChecksum);
+		Util.imprimeVetor(valorChecksum);
 		return valorChecksum;
 	}
 }
