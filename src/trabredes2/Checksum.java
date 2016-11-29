@@ -76,35 +76,17 @@ public class Checksum {
 			pt2Msg[j] = msg[i - 8];
 			j++;
 		}
-		System.out.println("");
-		System.out.print("1: ");
-		Util.imprimeVetor(pt1Msg);
-		System.out.print("2: ");
-		Util.imprimeVetor(pt2Msg);
-		resSomaC1 = somaC1(pt1Msg, pt2Msg);
-		System.out.print("3: ");
-		Util.imprimeVetor(resSomaC1);
-		System.out.println("");
 		while (nBitsUtilizados < tamMsg) {
 			j = 0;
 			while (j < 8) {
 				pt2Msg[j] = msg[tamMsg - (nBitsUtilizados + 8) + j];
 				j++;
 				nBitsUtilizados += 8;
-				System.out.print("1: ");
-				Util.imprimeVetor(resSomaC1);
-				resSomaC1 = somaC1(resSomaC1, pt2Msg);
-				System.out.print("2: ");
-				Util.imprimeVetor(pt2Msg);
-				System.out.print("3: ");
-				Util.imprimeVetor(resSomaC1);
-				System.out.println("");
 			}
 		}
 		for (int i = 0; i < 8; i++) {
 			valorChecksum[i] = resSomaC1[i] == 0 ? 1 : 0;
 		}
-		Util.imprimeVetor(valorChecksum);
 		return valorChecksum;
 	}
 }

@@ -7,8 +7,7 @@ public class MessageManager {
 	public static Integer[] geraMensagem(int tamanho, int seed) {
 		Random gerador = new Random(seed);
         Integer[] msg = new Integer[tamanho*8];
-        msg[0]=1;
-        for(int i=1; i<msg.length ; i++){
+        for(int i=0; i<msg.length ; i++){
             msg[i] = gerador.nextInt(100) > 65 ? 1 : 0;
         }
 		return msg;
@@ -28,6 +27,16 @@ public class MessageManager {
 			}
 		}
 		return msgComErros;
+	}
+
+	public static boolean comparaVetor(Integer[] vet1, Integer[] vet2) {
+
+		for(int i=0;i<vet1.length;i++){
+			if(vet1[i] != vet2[i]){
+				return true;
+			}
+		}
+		return false;
 	}
 	
 }

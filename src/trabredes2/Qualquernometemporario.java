@@ -16,18 +16,33 @@ public class Qualquernometemporario {
     private static Scanner teclado;
     
     public static void main(String[] args) {
-        teclado = new Scanner(System.in);
-        System.out.println("Digite o tamanho da mensagem em bytes: ");
-        int tamanho = teclado.nextInt();
-        System.out.println("Digite a seed do gerador aleatório:");
-        int seed = teclado.nextInt();
-        Integer[] msg = MessageManager.geraMensagem(tamanho,seed); 
-        System.out.print("Msg: ");
-        System.out.println("");
-        Util.imprimeVetor(msg);
-        Integer[]chechsumMensagem = Checksum.executa(msg);
-        System.out.print("resultado: ");
-        Util.imprimeVetor(chechsumMensagem);
+    	int tamanho = Integer.parseInt(args[1]);
+    	int npacotes = Integer.parseInt(args[2]);
+    	int seed = Integer.parseInt(args[3]);
+    	double probabilidade = Double.parseDouble(args[4]);
+    	int contaErro = 0;
+    	if(args[0].equalsIgnoreCase("csum") || args[0].equalsIgnoreCase("checksum")){
+    		for(int i = 0;i<npacotes;i++){
+    			 Integer[] msg = MessageManager.geraMensagem(tamanho,seed); 
+    	         Integer[]checksumMensagem = Checksum.executa(msg);
+    		}
+    	}
+    	if(args[0].equalsIgnoreCase("crc")){
+    		CRC crc = new CRC(args[5]);
+    		
+    		for(int i = 0;i<npacotes;i++){
+	   			Integer[] msg = MessageManager.geraMensagem(tamanho,seed); 
+	   			Integer[] crcMensagem = crc.executa(msg);	   	
+	   			Integer[] msgErro = MessageManager.insereErro(msg,probabilidade, seed);
+	   			Integer[] crcMensagemErro = crc.executa(msgErro);
+	   			boolean erro = MessageManager.comparaVetor(crcMensagem,crcMensagemErro);
+	   			if (erro){
+	   				contaErro++;
+	   			}
+    		}
+    		System.out.println((contaErro/npacotes)*100);
+    	}
+        
     }
     
 }
