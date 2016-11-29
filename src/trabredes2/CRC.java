@@ -6,7 +6,6 @@ public class CRC {
 
 	public CRC(String polinomio) {
 		Integer[] temp = Util.hexToBinary(polinomio);
-		Util.imprimeVetor(temp);
 		this.polinomio = temp;
 	}
 
@@ -18,9 +17,15 @@ public class CRC {
 		Integer[] crc = new Integer[8];
 		// método equivalente a multiplicação de polinômios pelo tamanho do
 		// polinômio gerador
-		for (int i = tamMsg-1; i < tamMsg + crc.length; i++) {
-			msgMultiplicada[i]=0;
+
+		for (int i = 0; i < tamMsg; i++) {
+			msgMultiplicada[i] = msg[i];
 		}
+
+		for (int i = tamMsg - 1; i < tamMsg + crc.length; i++) {
+			msgMultiplicada[i] = 0;
+		}
+		Util.imprimeVetor(msgMultiplicada);
 		while (ponto1 <= msgMultiplicada.length - polinomio.length) {
 
 			j = 0;
@@ -29,13 +34,15 @@ public class CRC {
 				msgMultiplicada[i] = getxOR(msgMultiplicada[i], j);
 				j++;
 			}
-			Util.imprimeVetor(msgMultiplicada);
+
 			// posicionamento da variável ponto1 no primeiro índice 1 da
 			// mensagem
-			Integer temp = 0;
+			
 			while (msgMultiplicada[ponto1] != 1) {
-				
 				ponto1++;
+				if(ponto1>=msgMultiplicada.length){
+					break;
+				}
 			}
 
 		}
