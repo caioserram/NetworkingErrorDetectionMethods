@@ -5,38 +5,43 @@
  */
 package trabredes2;
 
-import java.util.Scanner;
-
 /**
  *
  * @author caios_000
  */
-public class Qualquernometemporario {
+public class Simuladores {
 
-	private static Scanner teclado;
 
-	public static void main(String[] args) {
+	public static void main(String[] args)  {
 		int tamanho = Integer.parseInt(args[1]);
-		int npacotes = Integer.parseInt(args[2]);
+		double npacotes = Double.parseDouble(args[2]);
 		long seed = Long.parseLong(args[3]);// Integer.parseInt(args[3]);
 		double probabilidade = Double.parseDouble(args[4]);
-		int contaErro = 0;
+		double contaErro = 0;
 		if (args[0].equalsIgnoreCase("csum") || args[0].equalsIgnoreCase("checksum")) {
 			for (int i = 0; i < npacotes; i++) {
+				seed++;
 				Integer[] msg = MessageManager.geraMensagem(tamanho, seed);
-
 				Integer[] checksumMensagem = Checksum.executa(msg);
+				Integer[] msgErro = MessageManager.insereErro(msg, probabilidade, seed);
+				Integer[] checksumMensagemErro = Checksum.executa(msgErro);
+				boolean erro = MessageManager.comparaVetor(checksumMensagem, checksumMensagemErro);
+				if (erro) {
+					contaErro++;
+				}
 			}
+			System.out.println("Porcentagem de erros: " + (contaErro / npacotes) * 100.0+ "%");
 		}
 		if (args[0].equalsIgnoreCase("crc")) {
 			CRC crc = new CRC(args[5]);
-
 			for (int i = 0; i < npacotes; i++) {
-				seed = System.currentTimeMillis();
+				seed++;
 				Integer[] msg = MessageManager.geraMensagem(tamanho, seed);
 				Integer[] crcMensagem = crc.executa(msg);
+				//Util.imprimeVetor(crcMensagem);
 				Integer[] msgErro = MessageManager.insereErro(msg, probabilidade, seed);
 				Integer[] crcMensagemErro = crc.executa(msgErro);
+				//Util.imprimeVetor(crcMensagemErro);
 				boolean erro = MessageManager.comparaVetor(crcMensagem, crcMensagemErro);
 				if (erro) {
 					contaErro++;

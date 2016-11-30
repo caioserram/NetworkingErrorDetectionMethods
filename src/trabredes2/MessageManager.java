@@ -18,23 +18,20 @@ public class MessageManager {
 		Random gerador = new Random(seed);
 		int contagemErros = 0;
 		Integer[] msgComErros = new Integer[msg.length];
-		for(int i = 0; i<msgComErros.length;i++){
-			msgComErros[i] = 0;
-		}
 		while(contagemErros<=0){
 			for(int i=0;i<msg.length;i++){
 				double randomDouble = gerador.nextDouble();
 				if(randomDouble<=probabilidade){
-					if(msg[i]==0){
-						msgComErros[i] =0;
-					}
-					else{
-						msgComErros[i] =1;
-					}
+					msgComErros[i] = msg[i]==0?1:0;
 					contagemErros++;
+				}
+				else{
+					msgComErros[i] = msg[i];
 				}
 			}
 		}
+		//System.out.print("MSG: ");Util.imprimeVetor(msg);
+		//System.out.print("MSG com Erros: ");Util.imprimeVetor(msgComErros);
 		//System.out.println(msgComErros.length-msg.length);
 		return msgComErros;
 	}

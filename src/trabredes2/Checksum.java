@@ -76,13 +76,16 @@ public class Checksum {
 			pt2Msg[j] = msg[i - 8];
 			j++;
 		}
+
+		resSomaC1 = somaC1(pt1Msg,pt2Msg);
 		while (nBitsUtilizados < tamMsg) {
 			j = 0;
 			while (j < 8) {
 				pt2Msg[j] = msg[tamMsg - (nBitsUtilizados + 8) + j];
 				j++;
-				nBitsUtilizados += 8;
 			}
+			nBitsUtilizados += 8;
+			resSomaC1 = somaC1(resSomaC1,pt2Msg);
 		}
 		for (int i = 0; i < 8; i++) {
 			valorChecksum[i] = resSomaC1[i] == 0 ? 1 : 0;
