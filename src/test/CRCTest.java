@@ -49,7 +49,7 @@ public class CRCTest {
 	}
 	
 	@Test
-	public void ErrorTest() {
+	public void FalsoPositivoTest() {
 		final Integer[] vetor = {0,0,1,0,0,1,0,0,1,0,0,0,1,0,0,0,0,0,1,1,0,0,0,0};//248830
 		String polinomio = "1DE"; //111011110
 		CRC crc = new CRC(polinomio);		

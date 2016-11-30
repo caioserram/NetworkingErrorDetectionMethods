@@ -10,6 +10,7 @@ public class MessageManager {
         for(int i=0; i<msg.length ; i++){
             msg[i] = gerador.nextInt(100) > 65 ? 1 : 0;
         }
+        gerador.nextInt();
 //        Util.imprimeVetor(msg);
 		return msg;
 	}

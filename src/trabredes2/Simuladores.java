@@ -20,10 +20,11 @@ public class Simuladores {
 		double contaErro = 0;
 		if (args[0].equalsIgnoreCase("csum") || args[0].equalsIgnoreCase("checksum")) {
 			for (int i = 0; i < npacotes; i++) {
-				seed++;
-				Integer[] msg = MessageManager.geraMensagem(tamanho, seed);
+				Integer[] msg = MessageManager.geraMensagem(tamanho, seed++);
+				Util.imprimeVetor(msg);
 				Integer[] checksumMensagem = Checksum.executa(msg);
 				Integer[] msgErro = MessageManager.insereErro(msg, probabilidade, seed);
+				Util.imprimeVetor(msgErro);
 				Integer[] checksumMensagemErro = Checksum.executa(msgErro);
 				boolean erro = MessageManager.comparaVetor(checksumMensagem, checksumMensagemErro);
 				if (erro) {
@@ -35,8 +36,8 @@ public class Simuladores {
 		if (args[0].equalsIgnoreCase("crc")) {
 			CRC crc = new CRC(args[5]);
 			for (int i = 0; i < npacotes; i++) {
-				seed++;
-				Integer[] msg = MessageManager.geraMensagem(tamanho, seed);
+				Integer[] msg = MessageManager.geraMensagem(tamanho, seed++);
+				Util.imprimeVetor(msg);
 				Integer[] crcMensagem = crc.executa(msg);
 				//Util.imprimeVetor(crcMensagem);
 				Integer[] msgErro = MessageManager.insereErro(msg, probabilidade, seed);

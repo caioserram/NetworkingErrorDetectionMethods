@@ -6,13 +6,9 @@ import java.util.Arrays;
 
 import org.junit.Test;
 
-import trabredes2.CRC;
 import trabredes2.Checksum;
 
 public class checksumtest {
-	
-	//testes baseados nos resultados obtidos manualmente
-	
 	@Test
 	public void startsWithOneTest() {
 		
