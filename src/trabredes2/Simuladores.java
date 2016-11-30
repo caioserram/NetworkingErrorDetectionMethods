@@ -44,11 +44,11 @@ public class Simuladores {
 				//Util.imprimeVetor(crcMensagemErro);
 				boolean erro = MessageManager.comparaVetor(crcMensagem, crcMensagemErro);
 				if (erro) {
-					System.out.print("msg: ");Util.imprimeVetor(msg);
-					System.out.print("crcmsg: ");Util.imprimeVetor(crcMensagem);
+					//System.out.print("msg: ");Util.imprimeVetor(msg);
+					//System.out.print("crcmsg: ");Util.imprimeVetor(crcMensagem);
 					//00011010
-					System.out.print("msgErro: ");Util.imprimeVetor(msgErro);
-					System.out.print("crcmsgErro: ");Util.imprimeVetor(crcMensagemErro);
+					//System.out.print("msgErro: ");Util.imprimeVetor(msgErro);
+					//System.out.print("crcmsgErro: ");Util.imprimeVetor(crcMensagemErro);
 					contaErro++;
 				}
 			}
