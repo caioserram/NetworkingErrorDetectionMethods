@@ -20,6 +20,7 @@ public class CRC {
 		for (int i = 0; i < tamMsg; i++) {
 			msgMultiplicada[i] = msg[i];
 		}
+		//Util.imprimeVetor(msgMultiplicada);
 		// padding
 		for (int i = tamMsg ; i < (tamMsg + crc.length); i++) {
 			msgMultiplicada[i] = 0;
@@ -33,9 +34,8 @@ public class CRC {
 			while (ponto1 <= msgMultiplicada.length - polinomio.length && !msg0) {
 				// posicionamento da variável ponto1 no primeiro índice 1 da
 				// mensagem
-				j = 0;
+				j = 0;				
 				// realização do xOR entre o polinomio gerador e a mensagem
-				
 				for (int i = ponto1; i < ponto1 + polinomio.length; i++) {
 					msgMultiplicada[i] = getxOR(msgMultiplicada[i], j);
 					j++;

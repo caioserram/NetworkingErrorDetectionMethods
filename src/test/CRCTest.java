@@ -12,45 +12,47 @@ import trabredes2.CRC;
 
 public class CRCTest {
 
+	//testes baseados nos resultados obtidos no site: http://www.sunshine2k.de/coding/javascript/crc/crc_js.html
+	
 	@Test
 	public void startsWithOneTest() {
 		//polinomio 10010101
 		final Integer[] vetor = {1,0,1,1,0,1,0,1,1,0,1,0,1,1,1,0};//B5AE
-		String polinomio = "121";
+		String polinomio = "1DE";
 		CRC crc = new CRC(polinomio);		
-		assertEquals("[0, 1, 1, 0, 1, 0, 1, 0]",Arrays.toString(crc.executa(vetor)));
+		assertEquals("[1, 1, 1, 0, 1, 0, 1, 0]",Arrays.toString(crc.executa(vetor)));
 	}
 	
 	@Test
 	public void startsWithZeroTest() {
 		//polinomio 10010101
 		final Integer[] vetor = {0,0,1,1,0,1,0,1,1,0,1,0,1,1,1,0};//35AE
-		String polinomio = "121";
+		String polinomio = "1DE";
 		CRC crc = new CRC(polinomio);		
-		assertEquals("[1, 1, 0, 0, 0, 0, 0, 1]",Arrays.toString(crc.executa(vetor)));
+		assertEquals("[0, 0, 1, 0, 0, 1, 1, 0]",Arrays.toString(crc.executa(vetor)));
 	}
 	
 	@Test
 	public void AllOneTest() {
 		final Integer[] vetor = {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1};//FFFF
-		String polinomio = "121";
+		String polinomio = "1DE";
 		CRC crc = new CRC(polinomio);		
-		assertEquals("[0, 0, 1, 1, 0, 0, 1, 0]",Arrays.toString(crc.executa(vetor)));
+		assertEquals("[1, 1, 0, 0, 0, 0, 1, 0]",Arrays.toString(crc.executa(vetor)));
 	}
 	
 	@Test
 	public void AllZeroTest() {
 		final Integer[] vetor = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};//B5AE
-		String polinomio = "121";
+		String polinomio = "1DE";
 		CRC crc = new CRC(polinomio);		
 		assertEquals("[0, 0, 0, 0, 0, 0, 0, 0]",Arrays.toString(crc.executa(vetor)));
 	}
 	
 	@Test
 	public void ErrorTest() {
-		final Integer[] vetor = {1,0,0,0,1,0,1,1,1,0,0,1,1,0,0,0};//B5AE
-		String polinomio = "121";
+		final Integer[] vetor = {0,0,1,0,0,1,0,0,1,0,0,0,1,0,0,0,0,0,1,1,0,0,0,0};//248830
+		String polinomio = "1DE"; //111011110
 		CRC crc = new CRC(polinomio);		
-		assertEquals("[0, 0, 0, 0, 0, 0, 0, 0]",Arrays.toString(crc.executa(vetor)));
+		assertEquals("[0, 1, 1, 0, 1, 1, 1, 0]",Arrays.toString(crc.executa(vetor)));
 	}
 }

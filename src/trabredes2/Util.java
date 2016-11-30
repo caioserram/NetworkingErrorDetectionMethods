@@ -6,18 +6,6 @@ public class Util {
 			System.out.print(vet[i]);
 		}
 		System.out.println("");
-//		int cont = 0;
-//		while (cont < vet.length) {
-//			for (int i = cont; i < vet.length + cont; i++) {
-//				System.out.print(vet[i] + " ");
-//			}
-//			cont += vet.length;
-//			if (vet.length > 8) {
-//				System.out.println("");
-//			}
-//		}
-//		System.out.println("");
-
 	}
 	
 	public static Integer[] hexToBinary(String hex) {
