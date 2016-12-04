@@ -56,8 +56,8 @@ public class Simuladores {
 					contaErro++;
 				}
 			}
-			System.out.println("Numero de Erros: "+ contaErro);
-			System.out.println("Porcentagem de erros: " + ((contaErro / npacotes) * 100) + "%");
+			System.out.println("Numero de Colisões:     "+ contaErro);
+			System.out.println("Percentual de Colisões: " + ((contaErro / npacotes) * 100) + "%");
 		}
 
 	}
