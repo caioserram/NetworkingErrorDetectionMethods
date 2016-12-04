@@ -2,6 +2,11 @@ package trabredes2;
 
 public class Checksum {
 
+	/**
+	 * Método que retorna qual seria o valor resultante da soma bit a bit
+	 * @param valor
+	 * @return result
+	 */
 	public static int getResult(int valor) {
 		switch (valor) {
 		case 1:
@@ -16,6 +21,11 @@ public class Checksum {
 		}
 	}
 
+	/**
+	 * Método que recebe um valor como argumento e retorna se esse valor gera um carry na soma bit a bit
+	 * @param valor
+	 * @return carry
+	 */
 	public static int getCarry(int valor) {
 		switch (valor) {
 		case 1:
@@ -29,6 +39,12 @@ public class Checksum {
 		}
 	}
 
+	/**
+	 * Método que recebe duas partes de uma mensagem e retorna sua soma em complemento a 1
+	 * @param pt1Msg
+	 * @param pt2Msg
+	 * @return resultado da soma em complemento a 1
+	 */
 	public static Integer[] somaC1(Integer[] pt1Msg, Integer[] pt2Msg) {
 		Integer[] resultadoSomaC1 = new Integer[8];
 		Integer[] vetorUnitarioSomaCarry = { 0, 0, 0, 0, 0, 0, 0, 1 };
@@ -59,6 +75,11 @@ public class Checksum {
 		return resultadoSomaC1;
 	}
 	
+	/**
+	 * Método que retorna o checksum de uma mensagem qualquer
+	 * @param msg
+	 * @return checksum da mensagem recebida
+	 */
 	public static Integer[] executa(Integer[] msg) {
 		Integer[] valorChecksum = new Integer[8];
 		Integer[] pt1Msg = new Integer[8];

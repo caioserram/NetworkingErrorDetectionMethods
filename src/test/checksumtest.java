@@ -8,6 +8,11 @@ import org.junit.Test;
 
 import trabredes2.Checksum;
 
+/**
+ * @author caios_000
+ * Classe que realiza testes no cálculo do Checksum
+ * Para sua execução, é necessário que o projeto tenha junit 4 for como biblioteca
+ */
 public class checksumtest {
 	@Test
 	public void startsWithOneTest() {

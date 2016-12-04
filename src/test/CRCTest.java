@@ -10,6 +10,11 @@ import trabredes2.CRC;
 
 
 
+/**
+ * @author caios_000
+ * Classe que realiza testes no cálculo do CRC
+ * Para sua execução, é necessário que o projeto tenha junit 4 for como biblioteca
+ */
 public class CRCTest {
 
 	//testes baseados nos resultados obtidos no site: http://www.sunshine2k.de/coding/javascript/crc/crc_js.html

@@ -4,11 +4,21 @@ public class CRC {
 
 	Integer[] polinomio;
 
+	/**
+	 * Construtor do CRC que recebe seu atributo polinomio como parâmetro
+	 * @param polinomio
+	 */
 	public CRC(String polinomio) {
 		Integer[] temp = Util.hexToBinary(polinomio);
 		this.polinomio = temp;
 	}
 
+	
+	/**
+	 * Função que calcula o CRC a partir de uma mensagem representada por um vetor de inteiros que representam bits
+	 * @param msg
+	 * @return crc da mensagem calculada
+	 */
 	public Integer[] executa(Integer[] msg) {
 		int tamMsg = msg.length;
 		Integer[] crc = new Integer[8];
@@ -55,7 +65,13 @@ public class CRC {
 		}
 		return crc;
 	}
-
+	
+	/**
+	 * Método que verifica se uma mensagem contém apenas 0s ou não
+	 * @param msg
+	 * @return true se mensagem contém apenas 0s 
+	 * false se mensagem contém 1s
+	 */
 	private boolean msgnula(Integer[] msg) {
 		for (int i = 0; i < msg.length; i++) {
 			if (msg[i] != 0) {
@@ -65,8 +81,14 @@ public class CRC {
 		return true;
 	}
 
-	private Integer getxOR(Integer msgMultiplicadaIndex, int i) {
-		Integer xORResult = msgMultiplicadaIndex == polinomio[i] ? 0 : 1;
+	/**
+	 * Método que realiza xOR entre bits
+	 * @param msgMultiplicadaIndex
+	 * @param i
+	 * @return valor do xOR entre um bit da mensagem e um bit do polinomio 
+	 */
+	private Integer getxOR(Integer msgIndex, int i) {
+		Integer xORResult = msgIndex == polinomio[i] ? 0 : 1;
 		return xORResult;
 
 	}
